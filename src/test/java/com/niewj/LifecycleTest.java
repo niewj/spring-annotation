@@ -1,10 +1,7 @@
 package com.niewj;
 
 import com.niewj.bean.*;
-import com.niewj.config.Life1Config;
-import com.niewj.config.Life2Config;
-import com.niewj.config.Life3Config;
-import com.niewj.config.Life4Config;
+import com.niewj.config.*;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -14,6 +11,19 @@ import java.util.stream.Stream;
  * spring生命周期.
  */
 public class LifecycleTest {
+
+    @Test
+    public void testLifecycleAll() {
+        // 注释掉 LifeTestBean4#@Component以防干扰
+        // 1. 通过 实现 BeanPostProcesser 接口
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(LifeAllConfig.class);
+
+        // 打印spring容器中的 BeanDefinition
+        Stream.of(ctx.getBeanDefinitionNames()).forEach(e-> System.out.println(e));
+        System.out.println("=============================");
+
+        ctx.close();
+    }
 
     @Test
     public void testLifecycle4() { //Life4Config.class
