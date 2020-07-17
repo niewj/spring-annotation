@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 
-@Profile("product")
+//@Profile("dev") // -Dspring.profiles.active=dev时, 类里所有Bean才有可能注册
 @Configuration
 @PropertySource("classpath:/db.properties")
 public class ProfilesDatasourceConfig {
